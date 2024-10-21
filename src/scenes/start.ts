@@ -3,7 +3,7 @@ import enabled from "../utils/enabled";
 import { keyboards } from "../utils/keyboards";
 const scene = new Scenes.BaseScene("start");
 
-export let keyboard = [["Start"]];
+export let keyboard = [["Buyurtma berish", "Buyurtmalarim"]];
 export let admin_keyboard = [["Admin"]];
 
 scene.enter(async (ctx: any) => {
@@ -16,7 +16,25 @@ scene.enter(async (ctx: any) => {
   if (enable === "one" || enable === "four") {
     ctx.telegram.sendMessage(
       user_id,
-      `Assalomu alaykum!\nYangi Taqdimot tugmasini bosib taqdimot yaratishni boshlashingiz mumkin!`,
+      `Assalomu alaykum !
+    🤗 Sizni "QORA OLTIN VODIYSI"ga ishga taklif qilamiz!
+   
+   📲Onlayn tarzda anketani to'ldiring, suhbatdan o'ting va safimizga qo'shiling!
+   
+    🔘Qulayliklar
+   
+   ▫️Qadriyatli va tajribali jamoa;
+   ▫️Shaxsiy rivojlanish uchun imkoniyat;
+   ▫️Yaxshi oylik daromad;
+   ▫️Turli rag'batlantirish va bonuslar;
+   ▫️O'qish va tajriba olish imkoniyati;
+   ⚡️ SIZ UCHUN 12 OYLIK DOIMIY ISH❗️
+   
+   🙂 Talab etiladi:
+   
+   ▫️ Ishga mas'uliyatli bo'lish;
+   ▫️ Xushmuomalalik;
+   ▫️Natijaviylik va intizom.`,
       keyboards(keyboard)
     );
 
