@@ -83,7 +83,7 @@ scene.action("confirm", async (ctx: any) => {
   ctx.reply("Buyurtma qabul qilindi.Adminlarimiz sizga aloqaga chiqishadi");
 
   ctx.telegram.sendMessage(
-    -1002039798328,
+    -1002292346602,
     `Ismingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address}`,
     {
       reply_markup: {

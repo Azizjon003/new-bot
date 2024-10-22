@@ -24,10 +24,6 @@ bot.use((ctx: any, next) => {
 bot.start(async (ctx: any) => {
   return await ctx.scene.enter("start");
 });
-// bot.on("callback_query", async (ctx: any) => {
-//   console.log(ctx.callbackQuery.data);
-//   // return ctx.answerCbQuery();
-// });
 
 bot.hears(
   ["Yangi Taqdimot", "Balans", "Do'stlarimni taklif qilish", "Bosh menyu"], //  commandlar bot o'chib qolgan vaziyatda user qayta startni  bosganda javob berish uchun
@@ -72,7 +68,7 @@ bot.action(/user:[a-zA-Z0-9]+/, async (ctx: any) => {
       ctx.telegram.deleteMessage(chatId, messageId);
 
       ctx.telegram.sendMessage(
-        -1002039798328,
+        -1002292346602,
         `Ismingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} tasdiqlandi`
       );
 
@@ -93,7 +89,7 @@ bot.action(/user:[a-zA-Z0-9]+/, async (ctx: any) => {
       ctx.telegram.deleteMessage(chatId, messageId);
 
       ctx.telegram.sendMessage(
-        -1002039798328,
+        -1002292346602,
         `Ismingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} bekor qilindi`
       );
 
