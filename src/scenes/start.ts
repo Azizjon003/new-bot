@@ -16,25 +16,11 @@ scene.enter(async (ctx: any) => {
   if (enable === "one" || enable === "four") {
     ctx.telegram.sendMessage(
       user_id,
-      `Assalomu alaykum !
-    🤗 Sizni "QORA OLTIN VODIYSI"ga ishga taklif qilamiz!
-   
-   📲Onlayn tarzda anketani to'ldiring, suhbatdan o'ting va safimizga qo'shiling!
-   
-    🔘Qulayliklar
-   
-   ▫️Qadriyatli va tajribali jamoa;
-   ▫️Shaxsiy rivojlanish uchun imkoniyat;
-   ▫️Yaxshi oylik daromad;
-   ▫️Turli rag'batlantirish va bonuslar;
-   ▫️O'qish va tajriba olish imkoniyati;
-   ⚡️ SIZ UCHUN 12 OYLIK DOIMIY ISH❗️
-   
-   🙂 Talab etiladi:
-   
-   ▫️ Ishga mas'uliyatli bo'lish;
-   ▫️ Xushmuomalalik;
-   ▫️Natijaviylik va intizom.`,
+      `🎉"QORA OLTIN VODIYSI"
+
+⭐️ Zakazlar qabul qiluvchi maxsus BOT.
+
+❗️Maxsulot bo'yicha zakazlarni yozib yuboring.`,
       keyboards(keyboard)
     );
 
