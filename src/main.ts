@@ -1,6 +1,8 @@
 require("dotenv").config();
+import console from "console";
 import { Context, Middleware } from "telegraf";
 import { SceneContext } from "telegraf/typings/scenes";
+import prisma from "../prisma/prisma";
 import bot from "./core/bot";
 import session from "./core/session";
 import stage from "./scenes/index";
@@ -22,6 +24,10 @@ bot.use((ctx: any, next) => {
 bot.start(async (ctx: any) => {
   return await ctx.scene.enter("start");
 });
+// bot.on("callback_query", async (ctx: any) => {
+//   console.log(ctx.callbackQuery.data);
+//   // return ctx.answerCbQuery();
+// });
 
 bot.hears(
   ["Yangi Taqdimot", "Balans", "Do'stlarimni taklif qilish", "Bosh menyu"], //  commandlar bot o'chib qolgan vaziyatda user qayta startni  bosganda javob berish uchun
@@ -42,6 +48,74 @@ bot.catch(async (err: any, ctx) => {
   console.log(err);
   console.log(`Ooops, encountered an error for ${ctx}`, err);
 });
+
+bot.action(/user:[a-zA-Z0-9]+/, async (ctx: any) => {
+  const [_, orderId, action] = ctx.callbackQuery.data.split(":");
+  const messageId = ctx.callbackQuery.message?.message_id;
+  const chatId = ctx.callbackQuery.message?.chat.id;
+  const inlineMessageId = ctx.callbackQuery.inline_message_id;
+  console.log(orderId, action);
+  const order = await prisma.order.findFirst({
+    where: {
+      id: orderId,
+    },
+    include: {
+      user: true,
+    },
+  });
+
+  if (!order) {
+    return;
+  }
+  try {
+    if (action === "confirm") {
+      ctx.telegram.deleteMessage(chatId, messageId);
+
+      ctx.telegram.sendMessage(
+        -1002039798328,
+        `Ismingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} tasdiqlandi`
+      );
+
+      await ctx.telegram.sendMessage(
+        order.user?.telegram_id,
+        "Buyurtmangiz tasdiqlandi"
+      );
+
+      await prisma.order.update({
+        where: {
+          id: orderId,
+        },
+        data: {
+          status: "active",
+        },
+      });
+    } else if (action === "cancel") {
+      ctx.telegram.deleteMessage(chatId, messageId);
+
+      ctx.telegram.sendMessage(
+        -1002039798328,
+        `Ismingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} bekor qilindi`
+      );
+
+      await ctx.telegram.sendMessage(
+        order.user?.telegram_id,
+        "Buyurtmangiz bekor qilindi"
+      );
+
+      await prisma.order.update({
+        where: {
+          id: orderId,
+        },
+        data: {
+          status: "cancel",
+        },
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 botStart(bot);
 
 process.on("uncaughtException", (error) => {

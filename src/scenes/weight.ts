@@ -54,6 +54,7 @@ scene.on("message", async (ctx: any) => {
 
 scene.action(["Mayda Qop", "Naval"], async (ctx: any) => {
   const text = ctx.callbackQuery.data;
+  await ctx.deleteMessage();
   ctx.scene.session.qop = text;
   const order = await prisma.order.findFirst({
     where: {

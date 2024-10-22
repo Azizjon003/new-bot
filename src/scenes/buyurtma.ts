@@ -25,6 +25,7 @@ const komirKeyboard = [
   },
 ];
 scene.on("message", async (ctx: any) => {
+  await ctx.deleteMessage();
   const text = ctx.message.text;
 
   ctx.scene.session.name = text;
@@ -93,6 +94,7 @@ scene.action(["Areshka", "Semechka", "Otbor", "Xoka"], async (ctx: any) => {
 scene.action("confirm", async (ctx: any) => {
   const { name, komir } = ctx.scene.session;
 
+  await ctx.deleteMessage();
   const text = `Necci tonna olasiz ?`;
 
   const userId = String(ctx.from?.id);

@@ -82,7 +82,27 @@ scene.action("confirm", async (ctx: any) => {
 
   ctx.reply("Buyurtma qabul qilindi.Adminlarimiz sizga aloqaga chiqishadi");
 
-  return ctx.scene.enter("control");
+  ctx.telegram.sendMessage(
+    -1002039798328,
+    `Ismingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address}`,
+    {
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: "Tasdiqlash",
+              callback_data: `user:${order.id}:confirm`,
+            },
+            {
+              text: "Bekor qilish",
+              callback_data: `user:${order.id}:cancel`,
+            },
+          ],
+        ],
+      },
+    }
+  );
+  return ctx.scene.enter("start");
 });
 
 scene.action("cancel", async (ctx: any) => {

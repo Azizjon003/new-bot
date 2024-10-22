@@ -4,7 +4,7 @@ import { keyboards } from "../utils/keyboards";
 const scene = new Scenes.BaseScene("start");
 
 export let keyboard = [["Buyurtma berish", "Buyurtmalarim"]];
-export let admin_keyboard = [["Admin"]];
+export let admin_keyboard = [["Userlarni ko'rish", "Xabar yuborish"]];
 
 scene.enter(async (ctx: any) => {
   const user_id = ctx.from?.id;
