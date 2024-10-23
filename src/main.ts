@@ -69,7 +69,10 @@ bot.action(/user:[a-zA-Z0-9]+/, async (ctx: any) => {
 
       ctx.telegram.sendMessage(
         -1002292346602,
-        `Kim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id}\nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} tasdiqlandi`
+        `Kim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id}\nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} tasdiqlandi`,
+        {
+          parse_mode: "HTML",
+        }
       );
 
       await ctx.telegram.sendMessage(
@@ -90,7 +93,10 @@ bot.action(/user:[a-zA-Z0-9]+/, async (ctx: any) => {
 
       ctx.telegram.sendMessage(
         -1002292346602,
-        `Kim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id}\nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} bekor qilindi`
+        `Kim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id}\nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} bekor qilindi`,
+        {
+          parse_mode: "HTML",
+        }
       );
 
       await ctx.telegram.sendMessage(
