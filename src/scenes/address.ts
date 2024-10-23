@@ -80,6 +80,7 @@ scene.action("confirm", async (ctx: any) => {
     },
   });
 
+  await ctx.deleteMessage();
   ctx.reply("Buyurtma qabul qilindi.Adminlarimiz sizga aloqaga chiqishadi");
 
   ctx.telegram.sendMessage(

@@ -54,4 +54,10 @@ scene.hears(/^\/[a-zA-Z0-9]{25}$/, async (ctx: any) => {
   ctx.reply(text);
 });
 
+scene.hears("Aloqa", async (ctx: any) => {
+  ctx.reply(`Bog'lanish uchun:
++998937795606
++998937785606`);
+});
+
 export default scene;

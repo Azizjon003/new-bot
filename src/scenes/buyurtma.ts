@@ -61,19 +61,29 @@ scene.action(["Areshka", "Semechka", "Otbor", "Xoka"], async (ctx: any) => {
   const text = ctx.callbackQuery.data;
   ctx.scene.session.komir = text;
   let link;
+  let narxi;
+  console.log(text, "komir");
   switch (text) {
     case "Otbor":
       link = "https://t.me/mobi_center_baza/17";
+      narxi = `Навал 1250 \n Копга ❌`;
+      break;
     case "Areshka":
       link = "https://t.me/mobi_center_baza/18";
+      narxi = `Навал 1200 сум \n Копга 1300 сум`;
+      break;
     case "Semechka":
       link = "https://t.me/mobi_center_baza/19";
+      narxi = `Навал 1200 сум \n Копга 1300 сум`;
+      break;
     case "Xoka":
       link = "https://t.me/mobi_center_baza/20";
+      narxi = `Навал 1000 сум \n Копга 1100 сум`;
+      break;
   }
 
   ctx.replyWithVideo(link, {
-    caption: "Tasdiqlash uchun bosing 👇",
+    caption: `${narxi}\n Tasdiqlash uchun bosing 👇`,
     reply_markup: {
       inline_keyboard: [
         [
