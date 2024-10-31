@@ -11,7 +11,6 @@ scene.on("message", async (ctx: any) => {
   const states = ctx.scene.session.state;
 
   if (states === "message") {
-    // Xabar yuborish logikasi
     const user = await prisma.user.findFirst({
       where: {
         id: ctx.scene.session.userId,
@@ -23,7 +22,6 @@ scene.on("message", async (ctx: any) => {
     await ctx.telegram.sendMessage(user.telegram_id, text);
     return ctx.reply("Xabar yuborildi");
   } else {
-    // User ID ni tekshirish va saqlash logikasi
     const userId = Number(text);
     const user = await prisma.user.findFirst({
       where: {
@@ -33,14 +31,14 @@ scene.on("message", async (ctx: any) => {
     if (!user) {
       return ctx.reply("Foydalanuvchi topilmadi");
     }
-    ctx.scene.session = {
-      state: "message",
-      userId,
-    };
+
+    // Bu qismni o'zgartirdik
+    ctx.scene.session.state = "message";
+    ctx.scene.session.userId = userId;
+
     return ctx.reply("Xabar matnini kiriting");
   }
 });
-
 const sleep = async (ms: number) => {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
