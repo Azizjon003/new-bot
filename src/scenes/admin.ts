@@ -10,7 +10,7 @@ scene.hears("Userlarni ko'rish", async (ctx: any) => {
   const users = await prisma.user.findMany();
   let text = "Foydalanuvchilar ro'yhati";
   users.forEach((user, index) => {
-    text += `${index + 1} ${user.telegram_id}\n`;
+    text += `${index + 1} ${user.telegram_id} => ${user.name}\n`;
     if (index % 5 == 0) {
       ctx.reply(text);
 
