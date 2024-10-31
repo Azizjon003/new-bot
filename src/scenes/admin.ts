@@ -26,4 +26,12 @@ scene.hears("Xabar yuborish", async (ctx: any) => {
   return await ctx.scene.enter("send_message");
 });
 
+scene.hears("Userga xabar yuborish", async (ctx: any) => {
+  ctx.reply("User id ni kiriting");
+  ctx.scene.session = {
+    state: "user_id",
+  };
+  return await ctx.scene.enter("send_message_to_user");
+});
+
 export default scene;
