@@ -10,7 +10,7 @@ scene.on("message", async (ctx: any) => {
   const text = ctx.message.text;
   const states = ctx.scene.session.state;
 
-  if (states === "user_id") {
+  if (states) {
     const userId = Number(text);
     const user = await prisma.user.findFirst({
       where: {
