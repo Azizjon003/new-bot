@@ -13,7 +13,7 @@ scene.on("message", async (ctx: any) => {
   if (states === "message") {
     const user = await prisma.user.findFirst({
       where: {
-        id: ctx.scene.session.userId,
+        id: String(ctx.scene.session.userId),
       },
     });
     if (!user) {
