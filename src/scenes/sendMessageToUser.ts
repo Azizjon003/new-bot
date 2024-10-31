@@ -1,5 +1,10 @@
+import { Scenes } from "telegraf";
 import prisma from "../../prisma/prisma";
-import scene from "./address";
+const scene = new Scenes.BaseScene("send_message_to_user");
+
+scene.hears("/start", async (ctx: any) => {
+  return await ctx.scene.enter("start");
+});
 
 scene.on("message", async (ctx: any) => {
   const text = ctx.message.text;
@@ -35,3 +40,11 @@ scene.on("message", async (ctx: any) => {
     return ctx.reply("Xabar matnini kiriting");
   }
 });
+
+const sleep = async (ms: number) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
+
+export default scene;
