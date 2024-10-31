@@ -81,11 +81,23 @@ scene.action("confirm", async (ctx: any) => {
   });
 
   await ctx.deleteMessage();
+  const counts = await prisma.order.count({
+    where: {
+      OR: [
+        {
+          status: "confirmed",
+        },
+        {
+          status: "active",
+        },
+      ],
+    },
+  });
   ctx.reply("Buyurtma qabul qilindi.Adminlarimiz sizga aloqaga chiqishadi");
 
   ctx.telegram.sendMessage(
     -1002292346602,
-    `Ismingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address}`,
+    `No ${counts}\nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address}`,
     {
       reply_markup: {
         inline_keyboard: [
