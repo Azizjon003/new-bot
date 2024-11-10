@@ -66,16 +66,16 @@ scene.action(["Areshka", "Semechka", "Otbor", "Xoka"], async (ctx: any) => {
   switch (text) {
     case "Otbor":
       link = "https://t.me/mobi_center_baza/17";
-      narxi = `Навал 1250 \n Копга ❌`;
+      narxi = `Навал 1300 \n Копга ❌`;
       break;
     case "Areshka":
       link = "https://t.me/mobi_center_baza/18";
-      narxi = `Навал 1200 сум \n Копга 1300 сум`;
+      narxi = `Навал 1250 сум \n Копга 1350 сум`;
       break;
     case "Semechka":
       link = "https://t.me/mobi_center_baza/19";
-      // narxi = `Навал 1200 сум \n Копга 1300 сум`;
-      narxi = `Vaqtincha buyurtma qabul qilish to'xtatilgan`;
+      narxi = `Навал 1250 сум \n Копга 1350 сум`;
+      // narxi = `Vaqtincha buyurtma qabul qilish to'xtatilgan`;
       break;
     case "Xoka":
       link = "https://t.me/mobi_center_baza/28";
