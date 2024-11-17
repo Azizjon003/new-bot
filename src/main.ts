@@ -77,15 +77,25 @@ bot.action(/user:[a-zA-Z0-9]+/, async (ctx: any) => {
   });
   try {
     if (action === "confirm") {
-      ctx.telegram.deleteMessage(chatId, messageId);
+      // ctx.telegram.deleteMessage(chatId, messageId);
 
-      ctx.telegram.sendMessage(
-        -1002292346602,
+      await ctx.telegram.editMessageText(
+        chatId,
+        messageId,
+        null,
         `#${counts}\nKim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id} </a>\nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} tasdiqlandi`,
         {
           parse_mode: "HTML",
         }
       );
+
+      // ctx.telegram.sendMessage(
+      //   -1002292346602,
+      //   `#${counts}\nKim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id} </a>\nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} tasdiqlandi`,
+      //   {
+      //     parse_mode: "HTML",
+      //   }
+      // );
 
       await ctx.telegram.sendMessage(
         order.user?.telegram_id,
@@ -101,15 +111,24 @@ bot.action(/user:[a-zA-Z0-9]+/, async (ctx: any) => {
         },
       });
     } else if (action === "cancel") {
-      ctx.telegram.deleteMessage(chatId, messageId);
+      // ctx.telegram.deleteMessage(chatId, messageId);
 
-      ctx.telegram.sendMessage(
-        -1002292346602,
-        `#${counts}\nKim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id} </a> \nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} bekor qilindi`,
+      await ctx.telegram.editMessageText(
+        chatId,
+        messageId,
+        null,
+        `#${counts}\nKim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id} </a>\nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} bekor qilindi`,
         {
           parse_mode: "HTML",
         }
       );
+      // ctx.telegram.sendMessage(
+      //   -1002292346602,
+      //   `#${counts}\nKim tomonidan yuborildi <a href="tg://user?id=${order.user?.telegram_id}">${order.user?.telegram_id} </a> \nIsmingiz: ${order.name}\nVazni: ${order.weight}\nKomir: ${order.type}\nQop: ${order.qop}\nTelefon raqamingiz: ${order.phone}\nManzil: ${order.address} \n Buyurtma #${orderId} bekor qilindi`,
+      //   {
+      //     parse_mode: "HTML",
+      //   }
+      // );
 
       await ctx.telegram.sendMessage(
         order.user?.telegram_id,
