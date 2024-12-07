@@ -70,11 +70,11 @@ scene.action(["Areshka", "Semechka", "Otbor", "Xoka"], async (ctx: any) => {
       break;
     case "Areshka":
       link = "https://t.me/mobi_center_baza/18";
-      narxi = `Навал 1250 сум \n Копга 1350 сум`;
+      narxi = `Навал 1300 сум \n Копга 1400 сум`;
       break;
     case "Semechka":
       link = "https://t.me/mobi_center_baza/19";
-      narxi = `Навал 1250 сум \n Копга 1350 сум`;
+      narxi = `Навал 1300 сум \n Копга 1400 сум`;
       // narxi = `Vaqtincha buyurtma qabul qilish to'xtatilgan`;
       break;
     case "Xoka":
